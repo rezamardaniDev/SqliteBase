@@ -6,6 +6,7 @@ class Connector:
         self.connect = sqlite3.connect('myDatabase.db')
         self.cursor = self.connect.cursor()
         self.create_user_table()
+        self.create_admin_table()
 
     def create_user_table(self):
         with self.connect:
@@ -14,7 +15,7 @@ class Connector:
                 last_name TEXT
             )""")
 
-    def create_admin(self):
+    def create_admin_table(self):
         with self.connect:
             self.cursor.execute("""CREATE TABLE IF NOT EXISTS users(
                 first_name TEXT,
