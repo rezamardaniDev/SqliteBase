@@ -21,5 +21,10 @@ class Connector:
                 last_name TEXT
             )""")
 
+    def add_user(self, firstname, lastname):
+        with self.connect:
+            self.cursor.execute("""INSERT INTO users(first_name, last_name) VALUES (:first_name, :last_name)""",
+                                {'first_name': firstname, 'last_name': lastname})
+
 
 db = Connector()
