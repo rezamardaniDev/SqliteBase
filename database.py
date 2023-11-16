@@ -26,6 +26,11 @@ class Connector:
         with self.connect:
             self.cursor.execute("""INSERT INTO users(first_name, last_name) VALUES (:first_name, :last_name)""",
                                 {'first_name': firstname, 'last_name': lastname})
+    
+    def delete_user(self,firstname):
+        with self.connect:
+            self.cursor.execute("""DELETE FROM users WHERE first_name=(:firstname)""",
+                                {'firstname': firstname})
 
 
 db = Connector()
